@@ -4,11 +4,21 @@
     margin-bottom: .5rem;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
 
     &.required > label::before {
       content: "*";
+      color: red;
+    }
+
+    &_invalid {
+      display: block;
+      width: 100%;
+      text-align: right;
+      font-size: 80%;
+      margin-left: auto;
       color: red;
     }
 
@@ -21,8 +31,12 @@
       border-radius: 5px;
 
       &:focus {
-        border-color: red;
+        border-color: blue;
         outline: none;
+      }
+
+      &.is-invalid {
+        border-color: red;
       }
     }
 

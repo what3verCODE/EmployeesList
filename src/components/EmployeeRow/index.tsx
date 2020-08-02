@@ -14,6 +14,7 @@ export const EmployeeRow: React.FC<EmployeeRowProps> = ({employee, onClick}) => 
 
     return (
         <tr className="employee" onClick={() => onClick()}>
+            {/*TODO: bgc if selected*/}
             <td className="employee_name">
                 {employee.name}
             </td>

@@ -5,11 +5,12 @@ type State = {
     employeesStore: EmployeesStore
 }
 
-const StateContext = React.createContext<State>({} as State);
-
 const store: State = {
     employeesStore: new EmployeesStore()
 }
+
+
+const StateContext = React.createContext<State>({} as State);
 
 export const StateProvider: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
     return (

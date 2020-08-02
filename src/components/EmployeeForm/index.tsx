@@ -19,22 +19,20 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({employee, onEmployeeE
         switch (name) {
             case "name":
                 errors.name = value.length === 0 ? "Поле 'ФИО' не может быть пустым" : ""
-
                 onNameChange(value)
                 break;
             case "position":
                 errors.position = value.length === 0 ? "Поле 'Должность' не может быть пустым" : ""
-
                 onPositionChange(value)
                 break;
             case "gender":
                 onGenderChange(Number.parseInt(value))
                 break;
             case "dateOfBirth":
-                onDateChange(value)
+                onDateChange(value);
                 break;
             case "isFired":
-                onFiredChange()
+                onFiredChange();
                 break;
             default:
                 break;
@@ -79,17 +77,30 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({employee, onEmployeeE
                 )}
             </div>
 
-            {/*TODO: control gender with radiobutton*/}
-            <div className="form-input form-select">
+            <div className="form-input form-radio-group">
                 <label htmlFor="gender">Пол:</label>
-                <select name="gender"
-                        id="gender"
+                <div>
+                    <input type="radio"
+                           name="gender"
+                           id="gender-male"
+                           value={Gender.Male}
+                           checked={employee.gender === Gender.Male}
+                           onChange={e => onFormChange(e)}
+                    />
+                    <label htmlFor="gender-male">Мужчина</label>
+                </div>
 
-                        onChange={e => onFormChange(e)}
-                >
-                    <option value={Gender.Male}>Мужской</option>
-                    <option value={Gender.Female}>Женский</option>
-                </select>
+                <div>
+                    <input type="radio"
+                           name="gender"
+                           id="gender-female"
+                           value={Gender.Female}
+                           checked={employee.gender === Gender.Female}
+                           onChange={e => onFormChange(e)}
+                    />
+                    <label htmlFor="gender-female">Женщина</label>
+                </div>
+
             </div>
 
             <div className="form-input form-date">
@@ -107,6 +118,7 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({employee, onEmployeeE
             <div className="form-input form-checkbox">
                 <label htmlFor="isFired">Уволен:</label>
                 <input name='isFired'
+                       id="isFired"
                        type='checkbox'
                        checked={employee.isFired}
                        onChange={e => onFormChange(e)}

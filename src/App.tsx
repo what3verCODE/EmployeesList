@@ -12,7 +12,7 @@ import './App.scss';
 export const App = () => {
     const store = useRootState();
 
-    const [selected, setSelected] = React.useState();
+    const [selected, setSelected] = React.useState<number | undefined>();
 
     const onEmployeeCreate = (employee: Employee) => {
         //validate current employee
@@ -42,18 +42,33 @@ export const App = () => {
 
     return useObserver(() => (
         <div className="wrapper">
-            {/*TODO: add some styles (make it prettier)*/}
             <div className="heading">
                 <ul>
-                    <li onClick={() => onEmployeeCreate({name: "Введите имя", position: "Введите должность"})}>Добавить нового сотрудника</li>
-                    {/*TODO: disabled if 'selected' == null*/}
-                    <li onClick={() => onEmployeeRemove(selected)}>Удалить выбранного сотрудника</li>
+                    <li className="btn btn-success"
+                        onClick={() =>
+                            onEmployeeCreate({name: "Введите имя", position: "Введите должность"})
+                        }
+                    >
+                        Добавить нового сотрудника
+                    </li>
+
+                    <li className={selected != null ? "btn btn-success" : "btn btn-success btn-disabled"}
+                        onClick={() => {
+                            if (selected != null) onEmployeeRemove(selected)
+                            else return;
+                        }}
+                    >
+                        Удалить выбранного сотрудника
+                    </li>
                 </ul>
             </div>
 
             <div className="sections">
                 <div className="left-side">
-                    <EmployeesList employees={store.employeesStore.employees} onRowSelection={i => onRowSelection(i)}/>
+                    <EmployeesList employees={store.employeesStore.employees}
+                                   selected={selected}
+                                   onRowSelection={i => onRowSelection(i)}
+                    />
                 </div>
 
                 <div className="right-side">

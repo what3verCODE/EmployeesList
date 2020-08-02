@@ -6,15 +6,15 @@ import {Tag} from "../Tag";
 import {Gender} from "../../core/enums/gender";
 
 type EmployeeRowProps = {
-    employee: Employee
+    employee: Employee;
+    selected: boolean;
     onClick(): void;
 }
 
-export const EmployeeRow: React.FC<EmployeeRowProps> = ({employee, onClick}) => {
+export const EmployeeRow: React.FC<EmployeeRowProps> = ({employee, selected, onClick}) => {
 
     return (
-        <tr className="employee" onClick={() => onClick()}>
-            {/*TODO: bgc if selected*/}
+        <tr className={selected ? "employee employee-selected" : "employee"} onClick={() => onClick()}>
             <td className="employee_name">
                 {employee.name}
             </td>

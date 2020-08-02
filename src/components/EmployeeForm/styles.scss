@@ -22,6 +22,18 @@
       color: red;
     }
 
+    &.form-radio-group {
+      & > div {
+        display: inline-block;
+        float: right;
+        margin-left: .725rem;
+
+        &:not(:last-child) {
+          margin-left: auto;
+        }
+      }
+    }
+
     & > input {
       margin-left: auto;
       width: 50%;

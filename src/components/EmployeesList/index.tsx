@@ -6,10 +6,11 @@ import './styles.scss'
 
 type EmployeesListProps = {
     employees: Employee[]
+    selected: number | undefined
     onRowSelection(index: number): void;
 }
 
-export const EmployeesList: React.FC<EmployeesListProps> = ({employees, onRowSelection}) => {
+export const EmployeesList: React.FC<EmployeesListProps> = ({employees, selected, onRowSelection}) => {
 
     return (
         <table className='employees'>
@@ -28,6 +29,7 @@ export const EmployeesList: React.FC<EmployeesListProps> = ({employees, onRowSel
                     <EmployeeRow
                         key={index}
                         employee={employee}
+                        selected={selected === index}
                         onClick={() => onRowSelection(index)}
                     />)
                 }

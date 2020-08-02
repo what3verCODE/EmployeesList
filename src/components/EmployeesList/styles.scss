@@ -1,0 +1,15 @@
+.employees {
+  width: 100%;
+
+  border-collapse: collapse;
+  font-size: 14px;
+
+  &-heading {
+
+    font-size: 12px;
+
+    & > tr > th {
+      padding-bottom: .5rem;
+    }
+  }
+}

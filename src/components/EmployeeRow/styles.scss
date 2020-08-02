@@ -1,0 +1,18 @@
+.employee {
+
+  & > td {
+    padding: .5rem;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
+
+  & > * {
+    text-align: center;
+  }
+  
+  &:hover {
+    background: #dedede;
+  }
+}

@@ -1,0 +1,52 @@
+.wrapper {
+  height: 100vh;
+  background: #cecece;
+
+  & > .heading {
+    height: 50px;
+
+    margin-bottom: .5rem;
+    border-bottom: 1px solid #000;
+
+    & > ul {
+      list-style: none;
+      height: 100%;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      & > li {
+        height: 100%;
+        padding: 0 1.25rem;
+
+        line-height: 50px;
+
+        &:not(:last-child) {
+          border-right: 1px solid #000;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  & > .sections {
+    display: flex;
+    height: 100%;
+
+    & > .left-side, .right-side {
+      flex: 0 1 50%;
+      
+      padding: .75rem 1.25rem;
+    }
+
+    & > .left-side {
+      border-right: 1px solid #000;
+    }
+  }
+}
